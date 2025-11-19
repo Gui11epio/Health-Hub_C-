@@ -12,6 +12,7 @@ using MottuFind_C_.Infrastructure.HealthChecks;
 using Asp.Versioning;
 using Microsoft.Extensions.DependencyInjection;
 using Health_Hub.Domain.Interfaces;
+using Serilog;
 
 namespace Health_Hub
 {
@@ -20,6 +21,11 @@ namespace Health_Hub
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Host.UseSerilog((context, cfg) =>
+            {
+                cfg.ReadFrom.Configuration(context.Configuration);
+            });
 
             builder.Services.AddControllers();
 
