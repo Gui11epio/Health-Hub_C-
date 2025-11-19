@@ -20,25 +20,75 @@ Com o objetivo de deixar a aplicação mais organizada e destribuir as responsab
 
 ## 🚀 Rotas Disponíveis
 
-### 📍 MotoController - `/api/Moto`
-- `GET /api/Moto`  
-  Retorna todas as motos cadastradas.
+### 📍 Questionario (V1)
+- `GET /api/v1/QuestionarioV1`  
+  Retorna todos os questionários cadastrados.
 
-- `GET /api/Moto/placa`  
-  Retorna uma moto específica pela placa.
+- `GET /api/v1/QuestionarioV1/{id}`  
+  Retorna um questionário específico pelo id.
 
-- `GET /api/Moto/pagina`  
-  Retorna motos por meio de páginas.
+- `GET /api/v1/QuestionarioV1/pagina`  
+  Retorna questionários por meio de páginas.
 
-- `POST /api/Moto`  
-  Cria uma nova moto. Requer um corpo com os dados da moto.
+- `POST /api/v1/QuestionarioV1`  
+  Cria um novo questionário. Requer um corpo com os dados do questionário.
 
-- `PUT /api/Moto/placa`  
-  Atualiza os dados de uma moto pela placa.
+- `DELETE /api/v1/QuestionarioV1/{id}`  
+  Deleta um questionário pelo id.
 
-- `DELETE /api/Moto/placa`  
-  Deleta os dados de uma moto pela placa.
 
+### 📍 Questionario (V2)
+
+- `GET /api/v1/QuestionarioV2/{id}`  
+  Retorna um questionário específico pelo id.
+
+- `POST /api/v1/QuestionarioV2`  
+  Cria um novo questionário. Requer um corpo com os dados do questionário.
+
+- `DELETE /api/v1/QuestionarioV2/{id}`  
+  Deleta um questionário pelo id.
+
+
+### 📍 Usuário (V1)
+
+- `GET /api/v1/UsuarioV1/{id}`
+Obtém um usuário por ID
+
+- `PUT /api/v1/UsuarioV1/{id}`
+Atualiza um usuário existente
+
+- `DELETE /api/v1/UsuarioV1/{id}`
+Remove um usuário
+
+- `GET /api/v1/UsuarioV1/email/{email}`
+Obtém um usuário por email
+
+- `GET /api/v1/UsuarioV1`
+Obtém todos os usuários
+
+- `POST /api/v1/UsuarioV1`
+Cria um novo usuário
+
+- `GET /api/v1/UsuarioV1/pagina`
+Obtém usuários paginados
+
+
+### 📍 Usuário (V2)
+
+- `GET /api/v1/UsuarioV2/{id}`
+Obtém um usuário por ID
+
+- `PUT /api/v1/UsuarioV2/{id}`
+Atualiza um usuário existente
+
+- `DELETE /api/v1/UsuarioV2/{id}`
+Remove um usuário
+
+- `GET /api/v1/UsuarioV2`
+Obtém todos os usuários
+
+- `POST /api/v1/UsuarioV2`
+Cria um novo usuário
 
 
 ## 🚀 Rota dos Health Checks
@@ -79,40 +129,39 @@ Com o objetivo de deixar a aplicação mais organizada e destribuir as responsab
 
 2. **Vá até "lauchSettings.json"**
    
-   <img width="412" height="167" alt="image" src="https://github.com/user-attachments/assets/5f3c5fa2-cff7-4fa2-9300-9a0e745c5a24" />
+   <img width="353" height="146" alt="image" src="https://github.com/user-attachments/assets/9f93d392-ad7a-4c23-be0b-7daa7fb815e4" />
+
    
-- Nota: Clique com o botão direito em cima de **MottuFind_C_.API** e defina ele como projeto de inicialização, se ainda não estiver 
+- Nota: Clique com o botão direito em cima de **Health-Hub.API** e defina ele como projeto de inicialização, se ainda não estiver 
 
 
 3. **Coloque suas informações do Banco de Dados Oracle**
 
-   <img width="995" height="251" alt="image" src="https://github.com/user-attachments/assets/3815d7d0-6038-48f9-84e4-5b16fc378e18" />
+   <img width="933" height="245" alt="image" src="https://github.com/user-attachments/assets/1fb21d85-9938-443e-8a1c-34daf11e7f18" />
 
 
-4. **Abra a terminal na raiz do projeto e coloque as mesmas informações do Oracle**
+
+4. **Abra a terminal da Infrastructure e coloque as mesmas informações do Oracle**
    ```bash
    $env:DEFAULT_CONNECTION = "User Id=xxxxxxx;Password=xxxxxx;Data Source=xxxxxxxxxxxx:1521/ORCL"
 
-5. **Ainda na terminal, rode este comando para criar as tabelas em seu banco de dados:**
-
-   - Para criar uma migration
-   ```bash
-   dotnet ef migrations add ClassesNovas  --project .\MottuFind_C_.Infrastructure\MottuFind_C_.Infrastructure.csproj  --startup-project .\MottuFind\MottuFind_C_.API.csproj  --context AppDbContext
-   ```
+5. **Na terminal da Infrastructure, rode este comando para criar as tabelas em seu banco de dados:**
+   
    - Para poder criar as tabelas
    ```bash
-   dotnet ef database update --project .\MottuFind_C_.Infrastructure\MottuFind_C_.Infrastructure.csproj --startup-project .\MottuFind\MottuFind_C_.API.csproj --context AppDbContext
+   dotnet ef database update
    ```
 
 7. **Após tudo isso, rode o programa e o Swagger abrirá sozinho**
    ```bash
-   https://localhost:7117/swagger
+   https://localhost:7165/swagger/index.html
 
 8. **Para rodar os Testes unitários**
 
    - Vá até a camada de testes
      
-   <img width="371" height="73" alt="image" src="https://github.com/user-attachments/assets/72405f62-3a5a-4976-a53c-8d91c77e2fc6" />
+   <img width="217" height="102" alt="image" src="https://github.com/user-attachments/assets/9c53e928-0838-4fd4-b4d2-23b9e6818338" />
+
 
 
    - Clique com o botão direito em cima da camada e clique no executar testes
@@ -122,47 +171,39 @@ Com o objetivo de deixar a aplicação mais organizada e destribuir as responsab
 
    - Vai ir para uma tela onde vai rodar os testes
      
-     <img width="520" height="757" alt="image" src="https://github.com/user-attachments/assets/29dfb0ad-de8d-4589-aea1-b0ead37bc68a" />
+     <img width="519" height="331" alt="image" src="https://github.com/user-attachments/assets/11023bc5-5672-47dd-b018-eeee364fc976" />
 
-  9. **Authorization Bearer**
-
-      - É preciso fazer a autentificação para poder usar as rotas. Menos a de usuário que funciona sem, já que vai usar o usuario para fazer o /Auth
 
 ## 📬JSON de Teste para o Swagger
 
-- Moto
+- Questionário
   
 ```bash
 {
-  "placa": "ABC1D23",
-  "modelo": "POP",
-  "marca": "Yamaha",
-  "status": "MANUTENCAO",
-  "patioId": 1
+  "usuarioId": 1,
+  "nivelEstresse": 6,
+  "qualidadeSono": 4,
+  "ansiedade": 5,
+  "sobrecarga": 2
 }
 ```
-🔤 A placa da Moto deve ser única, não deve repetir
-
-🔤 Modelo e Status devem conter valores válidos dos enums MotoModelo e MotoStatus, como:
-
-- MotoModelo: "POP", "SPORT", "ELETRICA"
-  
-- MotoStatus: "LIGADO", "DESLIGADO", "MANUTENCAO", "DISPONIVEL"
 
 #
 
 - Usuário
 ```bash
 {
-  "setores": "MECANICA",
-  "nomeUsuario": "Roberto",
-  "email": "roberto@gmail.com",
-  "senha": "roB123@!"
+  
+  "emailCorporativo": "guilherme@gmail.com",
+  "nome": "Guilherme",
+  "senha": "GuiTatu0203!",
+  "tipo": "ADMIN"
+
 }
 ```
-🔤 Setores deve conter:
+🔤 Tipo deve conter:
 
-- Setores: "MECANICA" ou "GARAGEM"
+- Tipo: "ADMIN" ou "FUNCIONARIO"
 
 
 
