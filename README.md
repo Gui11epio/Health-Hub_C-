@@ -1,0 +1,175 @@
+# Health Hub
+
+### 👥 Nome e RM dos Integrantes
+
+- Guilherme Camasmie Laiber de Jesus – RM554894
+
+- Fernando Fernandes Prado – RM557982
+
+- Pedro Manzo Yokoo – RM556115
+
+### 📌 Descrição do Projeto
+
+O Health Hub é uma API desenvolvida em ASP.NET Core que fornece funcionalidades para acompanhamento de bem-estar, gestão de usuários, respostas de questionários, comunicação com IA e suporte corporativo à saúde mental.
+
+### 📌 Arquitetura do Projeto
+
+A aplicação implementa operações básicas de CRUD (Create, Read, Update, Delete), segue uma arquitetura em camadas (Controllers, Application, Domain, Infrastructure), segue os príncipios de DDD e Clean Code.
+
+Com o objetivo de deixar a aplicação mais organizada e destribuir as responsabilidades
+
+## 🚀 Rotas Disponíveis
+
+### 📍 MotoController - `/api/Moto`
+- `GET /api/Moto`  
+  Retorna todas as motos cadastradas.
+
+- `GET /api/Moto/placa`  
+  Retorna uma moto específica pela placa.
+
+- `GET /api/Moto/pagina`  
+  Retorna motos por meio de páginas.
+
+- `POST /api/Moto`  
+  Cria uma nova moto. Requer um corpo com os dados da moto.
+
+- `PUT /api/Moto/placa`  
+  Atualiza os dados de uma moto pela placa.
+
+- `DELETE /api/Moto/placa`  
+  Deleta os dados de uma moto pela placa.
+
+
+
+## 🚀 Rota dos Health Checks
+- `/health`
+  Vai mostrar o estado de tudo
+
+- `/health/ready`
+  Vai mostrar o estado do Banco de Dados apenas
+
+- `/health/live`
+  Vai mostrar o estado da Aplicação apenas
+
+
+## 🛠️ Tecnologias Utilizadas
+
+- [.NET 6 / ASP.NET Core](https://dotnet.microsoft.com/)
+- C#
+- Entity Framework Core
+- Swagger (OpenAPI) para documentação
+- Visual Studio 2022
+- Oracle DataBase
+- AutoMapper
+- Migrations
+- DataAnnotations
+- Pagination
+- HATEOAS
+- JWT
+- Health Check
+- xUnit
+- Versionamento de API
+
+## ▶️ Instruções de Execução
+
+1. **Clone o repositório:**
+   ```bash
+   https://github.com/Gui11epio/Health-Hub_C-.git
+   
+
+2. **Vá até "lauchSettings.json"**
+   
+   <img width="412" height="167" alt="image" src="https://github.com/user-attachments/assets/5f3c5fa2-cff7-4fa2-9300-9a0e745c5a24" />
+   
+- Nota: Clique com o botão direito em cima de **MottuFind_C_.API** e defina ele como projeto de inicialização, se ainda não estiver 
+
+
+3. **Coloque suas informações do Banco de Dados Oracle**
+
+   <img width="995" height="251" alt="image" src="https://github.com/user-attachments/assets/3815d7d0-6038-48f9-84e4-5b16fc378e18" />
+
+
+4. **Abra a terminal na raiz do projeto e coloque as mesmas informações do Oracle**
+   ```bash
+   $env:DEFAULT_CONNECTION = "User Id=xxxxxxx;Password=xxxxxx;Data Source=xxxxxxxxxxxx:1521/ORCL"
+
+5. **Ainda na terminal, rode este comando para criar as tabelas em seu banco de dados:**
+
+   - Para criar uma migration
+   ```bash
+   dotnet ef migrations add ClassesNovas  --project .\MottuFind_C_.Infrastructure\MottuFind_C_.Infrastructure.csproj  --startup-project .\MottuFind\MottuFind_C_.API.csproj  --context AppDbContext
+   ```
+   - Para poder criar as tabelas
+   ```bash
+   dotnet ef database update --project .\MottuFind_C_.Infrastructure\MottuFind_C_.Infrastructure.csproj --startup-project .\MottuFind\MottuFind_C_.API.csproj --context AppDbContext
+   ```
+
+7. **Após tudo isso, rode o programa e o Swagger abrirá sozinho**
+   ```bash
+   https://localhost:7117/swagger
+
+8. **Para rodar os Testes unitários**
+
+   - Vá até a camada de testes
+     
+   <img width="371" height="73" alt="image" src="https://github.com/user-attachments/assets/72405f62-3a5a-4976-a53c-8d91c77e2fc6" />
+
+
+   - Clique com o botão direito em cima da camada e clique no executar testes
+     
+     <img width="634" height="38" alt="image" src="https://github.com/user-attachments/assets/f2663387-c1f8-4444-8a66-91b501bb72cc" />
+
+
+   - Vai ir para uma tela onde vai rodar os testes
+     
+     <img width="520" height="757" alt="image" src="https://github.com/user-attachments/assets/29dfb0ad-de8d-4589-aea1-b0ead37bc68a" />
+
+  9. **Authorization Bearer**
+
+      - É preciso fazer a autentificação para poder usar as rotas. Menos a de usuário que funciona sem, já que vai usar o usuario para fazer o /Auth
+
+## 📬JSON de Teste para o Swagger
+
+- Moto
+  
+```bash
+{
+  "placa": "ABC1D23",
+  "modelo": "POP",
+  "marca": "Yamaha",
+  "status": "MANUTENCAO",
+  "patioId": 1
+}
+```
+🔤 A placa da Moto deve ser única, não deve repetir
+
+🔤 Modelo e Status devem conter valores válidos dos enums MotoModelo e MotoStatus, como:
+
+- MotoModelo: "POP", "SPORT", "ELETRICA"
+  
+- MotoStatus: "LIGADO", "DESLIGADO", "MANUTENCAO", "DISPONIVEL"
+
+#
+
+- Usuário
+```bash
+{
+  "setores": "MECANICA",
+  "nomeUsuario": "Roberto",
+  "email": "roberto@gmail.com",
+  "senha": "roB123@!"
+}
+```
+🔤 Setores deve conter:
+
+- Setores: "MECANICA" ou "GARAGEM"
+
+
+
+
+
+  
+
+
+
+   
