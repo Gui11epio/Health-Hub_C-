@@ -9,7 +9,7 @@ namespace Health_Hub.Controllers
 {
     [ApiController]
     [ApiVersion("2.0")]
-    [Route("api/v2/[controller]")]
+    [Route("api/v{version:apiversion}/QuestionarioV2")]
     [SwaggerTag("Controlador para gerenciar questionários - Versão 2")]
     public class QuestionarioControllerV2 : ControllerBase
     {
