@@ -90,6 +90,12 @@ Obtém todos os usuários
 - `POST /api/v1/UsuarioV2`
 Cria um novo usuário
 
+## 🚀 Link para o Render(deploy da API na nuvem)
+```bash
+https://health-hub-c.onrender.com
+````
+
+- Pode ser usada pelo Postman, apenas use o link junto com **rotas** disponíveis acima. Está sendo usado o meu Banco de Dados
 
 ## 🚀 Rota dos Health Checks
 - `/health`
